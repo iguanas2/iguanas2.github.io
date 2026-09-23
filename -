@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>passaca's lair</title>
+		<style>
+			html, body {
+            	margin: 0;
+            	padding: 0;
+            	height: 100%;
+				width: 100%;
+            	overflow-x: hidden;
+        	}
+			.badges img {
+        		image-rendering: pixelated;
+    			}
+    		.linkao {
+        		font-size: 2em;
+        		font-weight: bold;
+        		color: #b100ab;
+    			}
+			.background{
+            	position: fixed;
+            	top: 0;
+            	left: 0;
+            	width: 100%;
+            	height: 100%;
+            	background-image: url("images/space.gif");
+            	background-repeat: repeat;
+            	background-size: 600px;
+            	filter: blur(4px);
+            	z-index: -1;
+			}
+			.container {
+            	max-width: 1012px;
+            	margin: 0 auto;
+            	padding: 24px;
+            	background-color: rgba(0, 0, 0, 0.25);
+            	backdrop-filter: blur(5px);
+            	min-height: 100vh;
+            	color: #F0F0F0;
+            	font-family: sans-serif;
+        	}
+			h1{
+				transform:rotate(+1.5deg);
+			}
+			a{
+				color:#b100ab;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background"></div>
+		<div class="container">
+			<h1>passaca's lair</h1>
+			<p>olá! esse é meu site, sinta-se em casa</p>
+			<hr>
+			<div id="content">
+				<p>
+					tenho q colocar coisas mais sérias aqui, mas por enquanto tenho:
+					<br>
+					<br>
+					<a class="linkao" href="https://open.spotify.com/playlist/1DlKBFqNn7dxkg7ISiHeYQ?si=4BRAfd-DTHeMTPZVY4tZEw&pi=_7ddgt7QRXaHf">playlist based</a>
+					<br>
+					<p>wip de uma playlist mt based, redpill e obviamente mgtow.</p>
+					<br>
+					<a class="linkao" href="tcc.html">walkthrough tcc (n tem nome ainda)</a>
+					<br>
+					<p>backlog do meu tcc de análise e desenvolvimento de sistemas.</p>
+				</p>
+			</div>
+			<hr>
+			<h2>brain dump</h2>
+				<ul>
+					<li>
+						<a href="rip-gleezard.html">rip gleezard</a>
+					</li>
+					<!--
+					<li>
+						<p>
+							<a class="linkao" href="https://moxfield.com/users/iguanas2">meu moxfield</a>
+						<br>
+							<p>meu perfil do moxfield com todas minhas brews e bizarrices</p></p>
+						</p>
+					</li>
+					-->
+				</ul>
+			<hr>
+			<div id="badges">
+				<span>
+					<a>
+						<img loading="lazy" src="badges/iguana2.png">
+					</a>
+					<a>
+						<img loading="lazy" src="badges/pan.png">
+					</a>
+				</span>
+			</div>
+		</div>
+	</body>
+</html>
