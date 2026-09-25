@@ -54,7 +54,136 @@
 		<div class="background"></div>
 		<div class="container">
             <h1>Ilusion Life Counter<a class="right" href="index.html">voltar</a></h1>
-				</div>
+			<p>ILC is a minimal two-player life counter designed to run on extremely limited web environments, specifically older Kindle devices using the early HTML5-era browser implementation available around 2009.</p>
+			<br>
+			<p>The project intentionally avoids modern JavaScript APIs, frameworks, build systems, and complex DOM manipulation. Its implementation is deliberately simple so that the page can continue working on old and restricted browser engines.</p>
+			<h2>
+			Why the code looks unusual
+			</h2>
+			<p>The code may look unnecessarily simple or outdated compared to a modern web application. This is intentional.</p>
+			<br>
+			<p>The target environment is an old Kindle browser, where many features commonly used today either did not exist, were poorly supported, or consumed unnecessary resources. Because of this, the project follows a "lowest common denominator" approach: use features that are old, widely implemented, and unlikely to depend on modern browser behavior.</p>
+			<br>
+			<h3>Inline <b>onClick</b> handlers</h3>
+			<p>Instead of using modern event listeners such as:</p>
+			<code>button.addEventListener("click", ...);</code>
+			<p>the buttons directly call the function:</p>
+			<code>&lt;button onClick="changeScore(this,1)"&gt;+&lt;/button&gt;</code>
+			<p>This is an older style of JavaScript interaction, but it has an important advantage for this project: it relies on very basic browser functionality.</p>
+			<br>
+			<p>There is no initialization code, event-registration system, module system, or framework required. The browser simply executes the function when the button is pressed.</p>
+			<p>The this argument is also useful because it passes the button that was clicked directly to changeScore().</p>
+			<h3>Using <b>this</b> to identify the player</h3>
+			<p>The JavaScript does not assign unique IDs to every player.</p>
+			<br>
+			<p>Instead, it determines which player owns the clicked button:</p>
+			<br>
+			<code>const player = button.closest('.player');</code>
+			<p>This keeps the HTML repetitive but extremely small. Both players can use exactly the same JavaScript function.</p>
+			<br>
+			<p>The function therefore does not need separate functions such as:</p>
+			<code>increasePlayer1(); 
+				decreasePlayer1(); 
+				increasePlayer2(); 
+				decreasePlayer2();</code>
+			<p>One function handles every score button.</p>
+			<h3><b>closest()</b> and compatibility considerations</h3>
+			<p>The use of:</p>
+			<code>button.closest('.player')</code>
+			<p>is one of the more questionable parts of the implementation for a 2009-era browser.</p>
+			<p>Element.closest() is a much newer DOM API and was not part of the original 2009 browser environment. Modern browsers support it, but an old Kindle browser may not.</p>
+			<p>This is especially important because the project includes:</p>
+			<code>&lt;script src="polyfill.min.js"&gt;&lt;/script&gt;</code>
+			<p>The polyfill is intended to provide compatibility for JavaScript features that the original browser does not understand.</p>
+			<p>However, this also means the project depends on the specific contents of polyfill.min.js. Without the appropriate polyfill, closest() could cause the score buttons to fail entirely on an older browser.</p>
+			<p>For maximum compatibility, the closest() call could be replaced with older DOM traversal methods.</p>
+			<h3><b>textContent</b> instead of modern DOM techniques</h3>
+			<p>The score is updated using:</p>
+			<code>scoreElement.textContent = parseInt(scoreElement.textContent) + amount;</code>
+			<p>This deliberately performs a very small amount of DOM manipulation.</p>
+			<br>
+			<p>There is no virtual DOM, state management library, reactive framework, or application state. The displayed number itself acts as the stored value.</p>
+			<p>When the user presses +:</p>
+			<br>
+			<p>20 → 21</p>
+			<br>
+			<p>and when they press -:</p>
+			<br></br>
+			<p>20 → 19</p>
+			<br>
+			<p>The existing text is converted to an integer with parseInt(), modified, and written back to the page.</p>
+			<br>
+			<p>This approach is primitive by modern standards, but it is appropriate for a tiny application intended to run without additional dependencies.</p>
+			<h3>Rotating one player's interface</h3>
+			<p>The first player has:</p>
+			<code>&lt;div class="player rotate"&gt;&lt;/div&gt;</code>
+			<p>while the second player only has:</p>
+			<code>&lt;div class="player"&gt;&lt;/div&gt;</code>
+			<p>The rotate class is not handled by JavaScript. It is presumably used by style.css to rotate the first player's controls.</p>
+			<br>
+			<p>This is particularly useful for a physical two-player device because the Kindle can be positioned between two players, allowing each player to view their own controls from their side.</p>
+			<br>
+			<p>The JavaScript remains completely unaware of the rotation. It only deals with the player's score.</p>
+			<h3>The page reload button</h3>
+			<p>At first i made this button so i could troubleshoot without restarting the kindle, but turns out that i can stick it so it refresh the life totals.</p>
+			<br>
+			<code>&lt;button class="refresh" onClick="window.location.reload();"&gt; ILC - LIFE COUNTER &lt;/button&gt;</code>
+			<p>The initial HTML contains:</p>
+			<code>&lt;h1 class="score"&gt;20&lt;/h1&gt;</code>
+			<p>so reloading restores both players to 20 life.</p>
+			<br>
+			<p>This is another deliberately primitive solution. There is no local storage, database, cookies, application state, or reset logic.</p>
+			<br>
+			<p>For an old Kindle, this keeps the implementation extremely small.</p>
+			<h3>Minimal JavaScript architecture</h3>
+			<p>The entire application logic is essentially contained in one function:</p>
+			<code>function changeScore(button, amount) { const player = button.closest('.player'); const scoreElement = player.querySelector('.score'); scoreElement.textContent = parseInt(scoreElement.textContent) + amount; }</code>
+			<p>The function receives two pieces of information:</p>
+			<br>
+			<ul>
+				<li>button — the button that was pressed.</li>
+				<li>amount — either 1 or -1.</li>
+			</ul>
+			<br>
+			<p>The process is:</p>
+			<p>Button pressed</p>
+			<p>      ↓       </p>
+			<p>Find its .player container</p>
+			<p>      ↓       </p>
+			<p>Find that player's .score</p>
+			<p>      ↓       </p>
+			<p>Read current score</p>
+			<p>      ↓       </p>
+			<p>Convert text to integer</p>
+			<p>      ↓       </p>
+			<p>Add or subtract 1</p>
+			<p>      ↓       </p>
+			<p>Write new score to the page</p>
+			<h3>Why this approach makes sense for Kindle</h3>
+			<p>A modern implementation might use React, TypeScript, modules, bundlers, modern event APIs, local storage, or a more sophisticated state system.</p>
+			<br>
+			<p>None of those are necessary here.</p>
+			<br>
+			<p>The application only needs to perform three operations:</p>
+			<ul>
+				<li>Detect a button press.</li>
+				<li>Identify the corresponding player.</li>
+				<li>Increase or decrease a number.</li>
+			</ul>
+			<p>Using older browser-compatible techniques minimizes the amount of JavaScript that the Kindle needs to execute and avoids dependencies on modern browser APIs.</p>
+			<br>
+			<p>The project therefore intentionally prioritizes compatibility and simplicity over modern coding conventions.</p>
+			<h3>HTML5-era considerations</h3>
+			<p>Although the project uses an HTML5 doctype this should not be interpreted as meaning that the entire application depends on modern HTML5 APIs.</p>
+			<br>
+			<p>The page mostly uses HTML elements and behavior that were already familiar to older browsers. The HTML5 doctype is lightweight and allows the document to be interpreted using standards-oriented rendering where supported.
+			</p>
+			<br>
+			<p>The important distinction is that HTML5 syntax and modern JavaScript APIs are not the same thing.</p>
+			<br>
+			<p>The project can use the HTML5 doctype while deliberately avoiding newer JavaScript features that would be problematic on an old Kindle.</p>
+			<h2>4 Player support?</h2>
+			<p>The 4 player support is in wip, same as -5 +5 buttons, commander damage, poison, etc...</p>
 			</div>
 	</body>
 </html>
