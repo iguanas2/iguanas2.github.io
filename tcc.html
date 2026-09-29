@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Visus</title>
 		<style>
 			html, body {
@@ -41,12 +43,44 @@
             	min-height: 100vh;
             	color: #F0F0F0;
             	font-family: sans-serif;
+            	line-height: 1.6;
         	}
 			a{
 				color:#b166ab;
 			}
 			.right{
 				float:right;
+			}
+			h2{
+				margin-top: 40px;
+				border-bottom: 1px solid rgba(240, 240, 240, 0.25);
+				padding-bottom: 6px;
+			}
+			ul{
+				padding-left: 22px;
+			}
+			li{
+				margin-bottom: 8px;
+			}
+			.cards{
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 16px;
+				margin: 16px 0;
+			}
+			.card{
+				background-color: rgba(0, 0, 0, 0.3);
+				border: 1px solid rgba(240, 240, 240, 0.2);
+				border-radius: 8px;
+				padding: 4px 16px 8px 16px;
+			}
+			.card h3{
+				margin-bottom: 6px;
+			}
+			.destaque{
+				border-left: 4px solid #b166ab;
+				padding-left: 16px;
+				font-size: 1.1em;
 			}
 		</style>
 	</head>
@@ -59,10 +93,106 @@
                 <br></br>
                 <p>Visus é o nome do aplicativo de gestão acadêmica que meu grupo escolheu para teste de conclusão de curso da faculdade.</p>
                 <p>fizemos ele em 6 integrantes; Lucas Viana, Lucas Gomes, Gustavo Gimenez, Gustavo Torres, Vitor Doja e Vinícius Passacantili.</p>
-                <img src="/images/integrantes.jpg">
+                <img height=24px src="/images/visus/integrantes.jpg">
                 <p>escolhemos o tema de gestão acadêmica por ser um tema que julgamos ser mais impactante na sociedade, entre outro temas que poderiamos escolher, como: programa de otimização de rotas de pacote, rede social e até uma erp.</p>
                 <p>além disso, decidimos que iriamos fazer ele focado na acessibilidade para pessoas com deficiência visual, então fizemos diversas pesquisas de campo para saber oque os alunos deficientes visuais mais precisam nos seus aplicativos de gestão acadêmica.</p>
                 <a href="https://github.com/bluds-sa/visus">Repositório</a>
+
+                <h2>O problema</h2>
+                <p>A Constituição garante a educação como direito de todo brasileiro, mas na prática muitos aplicativos educacionais ainda não pensam em quem tem deficiência visual. Segundo a Organização Mundial da Saúde, mais de 2,2 bilhões de pessoas no mundo têm algum grau de deficiência visual.</p>
+                <p>Quando uma plataforma de ensino não funciona bem com leitores de tela, tem letras pequenas ou pouco contraste, o aluno perde autonomia: precisa de ajuda para fazer coisas simples, como ver uma tarefa ou entregar um trabalho.</p>
+                <p>Além disso, as ferramentas mais conhecidas para organizar turmas (como Microsoft Teams, Slack e Google Classroom) exigem assinatura ou pagamento, o que pesa para escolas com orçamento apertado, e mesmo assim oferecem poucos recursos de acessibilidade.</p>
+
+                <h2>A nossa solução</h2>
+                <p class="destaque">Uma plataforma gratuita, fácil de usar e feita desde o início para pessoas com baixa visão.</p>
+                <p>O Visus reúne num só lugar o que uma escola precisa no dia a dia: organizar disciplinas, publicar avisos e materiais, passar tarefas com prazo, receber as entregas, corrigir e acompanhar as notas. Tudo pensado para funcionar tanto no computador quanto no celular (Android e iOS).</p>
+                <p>Também entendemos que um app sozinho não resolve tudo. A inclusão depende de várias adaptações trabalhando juntas, e o Visus é uma delas.</p>
+
+                <h2>Quem usa o Visus</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Estudante</h3>
+                        <p>Vê as disciplinas, acompanha tarefas e prazos, entrega trabalhos, lê os materiais e consulta suas notas.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Educador</h3>
+                        <p>Publica avisos e materiais, cria tarefas, corrige as entregas e acompanha o desempenho dos alunos.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Gestor</h3>
+                        <p>Cuida da instituição: cadastra disciplinas, define quais professores dão cada matéria e administra os usuários.</p>
+                    </div>
+                </div>
+
+                <h2>O que dá pra fazer</h2>
+                <ul>
+                    <li><b>Disciplinas e turmas:</b> cada matéria tem seu espaço, com professores e alunos associados.</li>
+                    <li><b>Publicações e comentários:</b> os professores postam avisos e os alunos podem tirar dúvidas ali mesmo.</li>
+                    <li><b>Tarefas:</b> criação com prazo, entrega dentro da plataforma e correção com feedback.</li>
+                    <li><b>Arquivos:</b> compartilhamento e leitura de documentos (.txt, .docx, .pptx e .pdf) sem sair do app.</li>
+                    <li><b>Notas e métricas:</b> o aluno acompanha seu desempenho e o professor enxerga o andamento da turma.</li>
+                    <li><b>Calendário e notificações:</b> avisos de provas, prazos e novos materiais.</li>
+                    <li><b>Cadastro e login seguros:</b> cada tipo de usuário só acessa o que lhe cabe, com recuperação de senha por e-mail.</li>
+                </ul>
+
+                <h2>Acessibilidade na prática</h2>
+                <p>Essa é a parte que mais importa no projeto. Os recursos que colocamos foram:</p>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Tamanho da fonte</h3>
+                        <p>O usuário aumenta ou diminui o texto conforme a necessidade.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Espaçamento</h3>
+                        <p>Ajuste do espaço entre linhas e blocos de texto, para a leitura não ficar sobrecarregada.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Alto contraste</h3>
+                        <p>Tema claro e tema escuro com cores bem distintas entre texto e fundo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Foco visível</h3>
+                        <p>Quando se navega pelo teclado, o item selecionado fica claramente destacado.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Atalhos de teclado</h3>
+                        <p>Dá pra usar as funções principais sem depender do mouse.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Leitores de tela</h3>
+                        <p>Compatível com leitores como TalkBack (Android) e VoiceOver (iOS), que leem o conteúdo em voz alta.</p>
+                    </div>
+                </div>
+                <p>Cada aluno pode salvar suas preferências num perfil de acessibilidade próprio, então o app já abre do jeito que a pessoa precisa.</p>
+
+                <h2>O visual</h2>
+                <p>As cores foram escolhidas com cuidado: textos com contraste alto, links sempre sublinhados, cores de sucesso, aviso e erro que continuam fáceis de entender para quem tem daltonismo (não dependemos só da cor para passar a informação) e um anel de foco bem grosso nos itens selecionados. Os protótipos das telas foram desenhados antes de programar, para estudante, educador e gestor.</p>
+
+                <h2>Como funciona por dentro (versão curta)</h2>
+                <p>O sistema é dividido em três partes que conversam entre si, o que facilita manter e evoluir cada uma sem quebrar as outras:</p>
+                <ul>
+                    <li><b>Front-end:</b> as telas que a pessoa vê e usa.</li>
+                    <li><b>API:</b> o "cérebro", que aplica as regras (quem pode fazer o quê) e faz a ponte entre as telas e os dados.</li>
+                    <li><b>Banco de dados:</b> onde ficam guardadas as informações de usuários, disciplinas, tarefas, notas e arquivos.</li>
+                </ul>
+                <p>O código é aberto, disponível sob a licença AGPL-3.</p>
+
+                <h2>O que aprendemos</h2>
+                <p>O ambiente escolar é bem mais complicado do que parece: tem vários tipos de usuário, muitas regras e tudo está ligado entre si. Organizar o sistema em camadas ajudou a manter o projeto sob controle e deixou fácil adicionar novidades depois, como perfis de acessibilidade personalizados.</p>
+                <p>Também aprendemos muito visitando a Fundação Dorina Nowill para Cegos e o Instituto de Cegos Padre Chico. Ouvir as dificuldades de quem vive isso todo dia mudou várias das nossas decisões e nos ajudou a chegar em soluções mais úteis de verdade.</p>
+
+                <h2>Imagens do Aplicativo</h2>
+                <img height=24px src="/images/visus/visus-greeter.png"></img>
+                <img height=24px src="/images/visus/visus-estudante.png"></img>
+                <img height=24px src="/images/visus/visus-disciplinas.png"></img>
+                <img height=24px src="/images/visus/visus-metricas.png"></img>          
+                <h2>Links</h2>
+                <ul>
+                    <li><a href="https://github.com/bluds-sa/visus">Front-end (desktop)</a></li>
+                    <li><a href="https://github.com/bluds-sa/tcc-api">API</a></li>
+                    <li><a href="https://github.com/bluds-sa/contrato-api">Contratos da API</a></li>
+                </ul>
+                <p><small>Trabalho de Conclusão de Curso, Análise e Desenvolvimento de Sistemas, Fatec São Caetano do Sul, 2025. Orientador: Jacinto Carlos Ascencio Cansado.</small></p>
 			</div>
 	</body>
 </html>
